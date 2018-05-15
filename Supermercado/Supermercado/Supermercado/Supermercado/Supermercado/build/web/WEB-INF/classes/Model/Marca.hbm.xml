@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-05-2018 12:26:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Marca" table="marca" catalog="supermercado" optimistic-lock="version">
+        <id name="codigo" type="short">
+            <column name="codigo" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="15" />
+        </property>
+        <set name="productos" table="producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_marca" />
+            </key>
+            <one-to-many class="Model.Producto" />
+        </set>
+    </class>
+</hibernate-mapping>
